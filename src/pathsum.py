@@ -1,11 +1,15 @@
 from collections import defaultdict
-from symbol import Sym, φ
-from typing import DefaultDict, Dict, Set, Tuple
+from typing import DefaultDict
+from typing import Dict
+from typing import Set
+from typing import Tuple
 
 from aggregator import Aggregator
 from fsa import FSA
 from semiring import Semiring
 from state import State
+from symbol import Sym
+from symbol import φ
 
 
 class Strategy:
@@ -39,9 +43,9 @@ class FailureBackward:
         if φ not in list(self.A.out_symbols(q)):
             return self.β_S(q, Σ_q)
         return (
-            self.β_S(self.A.qφ(q), self.Σ)
-            + self.β_S(q, Σ_q)
-            - self.β_S(self.A.qφ(q), Σ_q)
+                self.β_S(self.A.qφ(q), self.Σ)
+                + self.β_S(q, Σ_q)
+                - self.β_S(self.A.qφ(q), Σ_q)
         )  # Line 9
 
     def β_a(self, q: State, a: Sym):  # Line 10
@@ -241,8 +245,8 @@ class Pathsum:
         def _descendant(q, qʼ) -> bool:  # Footnote 9
             """Tests whether q is a descendant of qʼ"""
             return (
-                intervals[q][0] <= intervals[qʼ][0]
-                and intervals[q][1] >= intervals[qʼ][1]
+                    intervals[q][0] <= intervals[qʼ][0]
+                    and intervals[q][1] >= intervals[qʼ][1]
             )
 
         for q in A.toposort(rev=True):  # Line 2

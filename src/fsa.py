@@ -1,9 +1,19 @@
 from collections import defaultdict as dd
-from symbol import Sym, ε, φ
-from typing import Dict, Generator, List, Optional, Set, Tuple, Type, Union
+from typing import Dict
+from typing import Generator
+from typing import List
+from typing import Optional
+from typing import Set
+from typing import Tuple
+from typing import Type
+from typing import Union
 
-from semiring import Real, Semiring
+from semiring import Real
+from semiring import Semiring
 from state import State
+from symbol import Sym
+from symbol import ε
+from symbol import φ
 
 
 class FSA:
@@ -164,7 +174,7 @@ class FSA:
                 yield q, w
 
     def arcs(
-        self, i: State, no_eps: bool = False, nozero: bool = True, reverse: bool = False
+            self, i: State, no_eps: bool = False, nozero: bool = True, reverse: bool = False
     ) -> Generator[Tuple[Sym, State, Semiring], None, None]:
         """Returns the arcs stemming from state i or going into the state i in the FSA.
         in the form of tuples (a, j, w) where a is the symbol, j is the target state of
@@ -194,7 +204,7 @@ class FSA:
                 yield a, j, w
 
     def out_symbols(
-        self, q: State, ignore_eps: bool = False, ignore_phi: bool = False
+            self, q: State, ignore_eps: bool = False, ignore_phi: bool = False
     ) -> Generator[Sym, None, None]:
         """Returns the set of symbols that have outgoing arcs from state q.
 
@@ -217,7 +227,7 @@ class FSA:
             yield a
 
     def a_out_arcs(
-        self, q: State, a: Sym
+            self, q: State, a: Sym
     ) -> Generator[Tuple[State, Semiring], None, None]:
         """Returns the arcs stemming from state q with label a.
 
@@ -318,7 +328,7 @@ class FSA:
         return list(self.δ[q][φ].keys())[0]
 
     def dfs(
-        self, Is: Optional[Set[State]] = None, intervals: bool = False
+            self, Is: Optional[Set[State]] = None, intervals: bool = False
     ) -> Union[
         Tuple[bool, Dict[State, int]], Tuple[bool, Dict[State, Tuple[int, int]]]
     ]:
@@ -454,8 +464,8 @@ class FSA:
 
         if self.num_states > 64:
             return (
-                "FST too large to draw graphic, use fst.ascii_visualize()<br />"
-                + f"<code>FST(num_states={self.num_states})</code>"
+                    "FST too large to draw graphic, use fst.ascii_visualize()<br />"
+                    + f"<code>FST(num_states={self.num_states})</code>"
             )
 
         finals = {q for q, _ in self.F}
@@ -519,8 +529,8 @@ class FSA:
         # otherwise it ends up crashing and stuff...
         if len(ret) > 256:
             return (
-                "FST too large to draw graphic, use fst.ascii_visualize()<br />"
-                + f"<code>FST(num_states={self.num_states})</code>"
+                    "FST too large to draw graphic, use fst.ascii_visualize()<br />"
+                    + f"<code>FST(num_states={self.num_states})</code>"
             )
 
         ret2 = [

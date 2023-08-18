@@ -1,10 +1,13 @@
 from collections import defaultdict as dd
-from symbol import Sym, ε, φ
-from typing import Set, Tuple
+from typing import Set
+from typing import Tuple
 
 from fsa import FSA
 from semiring import Semiring
 from state import State
+from symbol import Sym
+from symbol import ε
+from symbol import φ
 
 
 class Transformer:
@@ -72,9 +75,9 @@ class Transformer:
 
     @staticmethod
     def _phi_transitive_closure(
-        fsa: FSA,
-        q: State,
-        single_hops: dd[State, dd[Sym, dd[State, Semiring]]],
+            fsa: FSA,
+            q: State,
+            single_hops: dd[State, dd[Sym, dd[State, Semiring]]],
     ) -> None:
         """Determines the one-hop arcs possible from a given state `q` according to
         the original transition function and the failure arcs.
@@ -111,8 +114,8 @@ class Transformer:
 
     @staticmethod
     def _failure_expanded_fsa(
-        fsa: FSA,
-        single_hops: dd[State, dd[Sym, dd[State, Semiring]]],
+            fsa: FSA,
+            single_hops: dd[State, dd[Sym, dd[State, Semiring]]],
     ) -> FSA:
         """Construct the expanded FSA based on the one-hop arcs
         found by traversing the failure arcs.

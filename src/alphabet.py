@@ -1,6 +1,11 @@
 from collections.abc import Sequence
-from symbol import Sym, to_sym, ε
-from typing import List, Set, Union
+from typing import List
+from typing import Set
+from typing import Union
+
+from symbol import Sym
+from symbol import to_sym
+from symbol import ε
 
 
 class Alphabet(Sequence):
@@ -49,7 +54,7 @@ class Alphabet(Sequence):
 
 
 def to_alphabet(
-    symbols: Union[List[Union[Sym, str]], Set[Union[Sym, str]], str]
+        symbols: Union[List[Union[Sym, str]], Set[Union[Sym, str]], str]
 ) -> Alphabet:
     """Creates an Alphabet from a list of symbols.
 

@@ -2,22 +2,27 @@ import random
 import string
 from fractions import Fraction
 from math import sqrt
-from symbol import Sym, ε, φ
-from typing import List, Optional, Tuple, Type, Union
+from typing import List
+from typing import Optional
+from typing import Tuple
+from typing import Type
+from typing import Union
 
 from alphabet import Alphabet
-from fsa import FSA, State
+from fsa import FSA
+from fsa import State
 from pathsum import Pathsum
-from semiring import (
-    Boolean,
-    Integer,
-    MaxPlus,
-    Rational,
-    Real,
-    Semiring,
-    String,
-    Tropical,
-)
+from semiring import Boolean
+from semiring import Integer
+from semiring import MaxPlus
+from semiring import Rational
+from semiring import Real
+from semiring import Semiring
+from semiring import String
+from semiring import Tropical
+from symbol import Sym
+from symbol import ε
+from symbol import φ
 
 
 def _random_weight(semiring, **kwargs):  # noqa: C901
@@ -52,15 +57,15 @@ def _random_weight(semiring, **kwargs):  # noqa: C901
 
 
 def _add_arc(
-    i: int,
-    a: Union[Sym, Tuple[Sym, Sym]],
-    j: int,
-    used_a: List[Union[Sym, Tuple[Sym, Sym]]],
-    A: FSA,
-    bias: float = 0.25,
-    acyclic: bool = False,
-    deterministic: bool = True,
-    **kwargs,
+        i: int,
+        a: Union[Sym, Tuple[Sym, Sym]],
+        j: int,
+        used_a: List[Union[Sym, Tuple[Sym, Sym]]],
+        A: FSA,
+        bias: float = 0.25,
+        acyclic: bool = False,
+        deterministic: bool = True,
+        **kwargs,
 ) -> bool:
     """Handles adding a state to the random machine.
 
@@ -108,15 +113,15 @@ def _add_arc(
 
 
 def _random_machine(
-    Σ: Alphabet,
-    R: Type[Semiring],
-    num_states: int,
-    bias: float = 0.25,
-    no_eps: bool = False,
-    no_phi: bool = True,
-    acyclic: bool = False,
-    deterministic: bool = True,
-    **kwargs,
+        Σ: Alphabet,
+        R: Type[Semiring],
+        num_states: int,
+        bias: float = 0.25,
+        no_eps: bool = False,
+        no_phi: bool = True,
+        acyclic: bool = False,
+        deterministic: bool = True,
+        **kwargs,
 ) -> FSA:
     fsa = FSA(R=R)
 
@@ -152,20 +157,20 @@ def _random_machine(
 
 
 def random_machine(
-    Sigma: Alphabet,
-    R: Type[Semiring],
-    num_states: int,
-    bias: float = 0.25,
-    no_eps: bool = False,
-    no_phi: bool = True,
-    eigen: bool = False,
-    acyclic: bool = False,
-    deterministic: bool = True,
-    trimmed: bool = True,
-    pushed: bool = False,
-    fst: bool = False,
-    seed: Optional[int] = None,
-    **kwargs,
+        Sigma: Alphabet,
+        R: Type[Semiring],
+        num_states: int,
+        bias: float = 0.25,
+        no_eps: bool = False,
+        no_phi: bool = True,
+        eigen: bool = False,
+        acyclic: bool = False,
+        deterministic: bool = True,
+        trimmed: bool = True,
+        pushed: bool = False,
+        fst: bool = False,
+        seed: Optional[int] = None,
+        **kwargs,
 ) -> FSA:
     """
     Creates a random WFSA or WFST.

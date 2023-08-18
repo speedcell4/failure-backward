@@ -1,6 +1,7 @@
 from collections import defaultdict as dd
 from fractions import Fraction
-from math import exp, log
+from math import exp
+from math import log
 
 
 # base code from
@@ -72,7 +73,7 @@ class String(Semiring):
         from rayuela.base.misc import lcp
 
         prefix = lcp(self.score, other.score)
-        return String(self.score[len(prefix) :])
+        return String(self.score[len(prefix):])
 
     def __eq__(self, other):
         return self.score == other.score
@@ -331,7 +332,7 @@ class Real(Semiring):
         return Real(1.0 / self.score)
 
     def __pow__(self, other):
-        return Real(self.score**other)
+        return Real(self.score ** other)
 
     def __truediv__(self, other):
         return Real(self.score / other.score)

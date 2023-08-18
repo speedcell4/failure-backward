@@ -1,9 +1,11 @@
 import pytest
 
 from alphabet import to_alphabet
-from pathsum import Pathsum, Strategy
+from pathsum import Pathsum
+from pathsum import Strategy
 from random_fsa import random_machine
-from semiring import Real, Tropical
+from semiring import Real
+from semiring import Tropical
 from transformer import Transformer
 
 

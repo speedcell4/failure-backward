@@ -1,9 +1,10 @@
-from math import ceil, log2
-from symbol import Sym
+from math import ceil
+from math import log2
 from typing import Type
 
 from alphabet import Alphabet
 from semiring import Semiring
+from symbol import Sym
 
 
 class FenwickTree:
